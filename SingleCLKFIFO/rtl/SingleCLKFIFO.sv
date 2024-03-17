@@ -6,6 +6,7 @@
 // ----------------------------------------------------------------------------
 
 module SingleCLKFIFO(fifo_if fifo); 
+  
   //FIFO memory
   logic [31:0] mem [255:0];
   //FIFO pointer
