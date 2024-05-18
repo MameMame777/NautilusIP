@@ -1,5 +1,5 @@
 rtl    := ./rtl/SingleCLKFIFO.sv
-verif  := ./verification/SingleCLKFIFO_tb.sv 
+verif  := ./verification/SingleCLKFIFO_tb_top.sv 
 interface := ./rtl/interface.sv
 exec   := run.x
 opt    := --binary --trace
