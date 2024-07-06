@@ -17,6 +17,7 @@ Describe the architecture of the testbench used for verification.
 ・Testbench Top
 ・SingleCLKFIFO(Device Under Verification)
 ・TestClass
+・assertion program block 
 
 ## Test Cases
 

@@ -16,7 +16,7 @@ module SingleCLKFIFO(fifo_if fifo);
   //FIFO status
   logic [7:0] cnt;
   //FIFO logic
-  always_ff @(posedge fifo.clk or posedge fifo.rst)
+  always_ff @(posedge fifo.clk )
   begin
     if(fifo.rst) begin
       wr_ptr <= 9'd0;
@@ -29,7 +29,7 @@ module SingleCLKFIFO(fifo_if fifo);
       end
     end
   end
-  always_ff @(posedge fifo.clk or posedge fifo.rst) begin
+  always_ff @(posedge fifo.clk) begin
     if(fifo.rst) begin
       rd_ptr <= 9'd0;
     end else begin
@@ -47,7 +47,7 @@ module SingleCLKFIFO(fifo_if fifo);
       fifo.full  = ((rd_ptr[7:0] == wr_ptr[7:0]) && (rd_ptr[8] != wr_ptr[8]));
   end
   //fifo almost full logic
-  always_ff @(posedge fifo.clk or posedge fifo.rst) begin
+  always_ff @(posedge fifo.clk) begin
     if(fifo.rst) begin
       cnt[7:0] <= 8'd0;
     end else begin
