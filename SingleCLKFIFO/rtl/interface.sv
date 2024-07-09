@@ -8,6 +8,9 @@ interface fifo_if (input clk, input rst);
   logic        full;
   logic        almost_full;
 
+  //default clocking procedure
+  default clocking cb @(posedge clk);endclocking
+
   modport sender (
     input  wr_en,wr_data,
     output rd_en, rd_data, valid,empty, full, almost_full
