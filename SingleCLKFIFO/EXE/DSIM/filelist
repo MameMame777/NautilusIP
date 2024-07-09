@@ -1,0 +1,7 @@
+#Device Under verification
+../../rtl/SingleCLKFIFO.sv
+../../rtl/interface.sv
+#test bench
+../../verification/SingleCLKFIFO_class.sv 
+../../verification/SingleCLKFIFO_tb_top.sv
+../../verification/SingleCLKFIFO_assertion.sv
