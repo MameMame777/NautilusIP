@@ -28,6 +28,20 @@ task driver_t::driver_dut(simple_item_t item);
     //vif.rd_data <= item.d;
     @(negedge vif.clk);
     vif.rd_en    <= 0 ;
+  end else if(item.all_write) begin
+    for(int i=0; i<255; i++)begin
+      vif.wr_en   <= 1 ;
+      vif.wr_data <= item.wr_data_256[i];
+      vif.rd_en    <= 0 ;
+      @(negedge vif.clk);
+    end
+  end else if(item.all_read) begin
+    for(int i=0; i<255; i++)begin
+      vif.wr_en   <= 0 ;
+      vif.wr_data <= 0;
+      vif.rd_en   <= 1 ;
+      @(negedge vif.clk);
+    end
   end else if(item.nop) begin
     vif.wr_en    <= 0 ;
     vif.rd_en    <= 0 ;

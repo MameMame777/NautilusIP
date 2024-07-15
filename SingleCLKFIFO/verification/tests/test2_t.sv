@@ -1,5 +1,5 @@
 class test2_t extends test_base_t;
-  int op[] = '{RESET,WRITE,WRITE,WRITE,WRITE};
+  int op[] = '{RESET,FULL_WRITE,ALL_READ};
   function new();
     super.new();
   endfunction

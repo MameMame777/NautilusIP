@@ -1,0 +1,8 @@
+#Device Under verification
+../rtl/sample_pdff.sv
+../rtl/sample_interface.sv
+#test bench
+../verification/sample_item.sv
+../verification/sample_collector.sv 
+../verification/sample_driver.sv
+../verification/top.sv

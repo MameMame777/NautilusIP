@@ -42,6 +42,18 @@ function simple_item_t test_base_t::make_item(input int op);
             make_item.wr_en = 0;
             make_item.rd_en = 1;
           end
+    FULL_WRITE: begin
+            make_item.all_write = 1;
+            make_item.all_read  = 0;
+            make_item.wr_data   = 0;
+            for(int i =0; i<255; i++)begin
+              make_item.wr_data_256[i] = $urandom;
+            end
+          end
+    ALL_READ : begin
+            make_item.all_write = 0;
+            make_item.all_read  = 1;
+          end
     NOP : begin
             make_item.wr_en = 0;
             make_item.rd_en = 0;

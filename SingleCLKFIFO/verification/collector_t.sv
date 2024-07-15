@@ -28,7 +28,7 @@ task collector_t::collect_response();
     else
       msg = "NOP";
     print(msg);
-    if($time > 1000) $fatal(0,"TESTCASE is Timeout");
+    if($time > 10000) $fatal(0,"TESTCASE is Timeout");
   end
 endtask
 

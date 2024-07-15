@@ -7,6 +7,8 @@ design_root_dir: .
 simulations:
   - name: TESTCASE=0
     options: '-top work.top -L dut +acc+b -waves waves.mxd  +TESTCASE=0'
+  - name: TESTCASE=1
+    options: '-top work.top -L dut +acc+b -waves waves.mxd  +TESTCASE=1'
 source_files:
   - language: verilog
     path: filelist
