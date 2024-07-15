@@ -19,7 +19,8 @@ task driver_t::driver_dut(simple_item_t item);
     @(vif.cb) vif.rst = 0;
   end else if(item.wr_en) begin
     vif.wr_en   <= 1 ;
-    vif.wr_data <= item.wr_data;
+    vif.wr_data <= item.wr_data[0];
+    //$display("write data %0x",item.wr_data[0]);
     @(negedge vif.clk);
     vif.wr_en   <= 0;
     vif.wr_data <=0;
@@ -31,7 +32,7 @@ task driver_t::driver_dut(simple_item_t item);
   end else if(item.all_write) begin
     for(int i=0; i<255; i++)begin
       vif.wr_en   <= 1 ;
-      vif.wr_data <= item.wr_data_256[i];
+      vif.wr_data <= item.wr_data[i];
       vif.rd_en    <= 0 ;
       @(negedge vif.clk);
     end

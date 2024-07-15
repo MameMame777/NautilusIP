@@ -36,7 +36,7 @@ function simple_item_t test_base_t::make_item(input int op);
     WRITE:begin
             make_item.wr_en = 1;
             make_item.rd_en = 0;
-            make_item.wr_data = $urandom;
+            make_item.wr_data[0] = $urandom;
           end
     READ: begin
             make_item.wr_en = 0;
@@ -45,9 +45,8 @@ function simple_item_t test_base_t::make_item(input int op);
     FULL_WRITE: begin
             make_item.all_write = 1;
             make_item.all_read  = 0;
-            make_item.wr_data   = 0;
             for(int i =0; i<255; i++)begin
-              make_item.wr_data_256[i] = $urandom;
+              make_item.wr_data[i] = $urandom;
             end
           end
     ALL_READ : begin
