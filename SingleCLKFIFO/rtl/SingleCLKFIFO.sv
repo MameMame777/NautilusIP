@@ -5,7 +5,7 @@
 //               and can be write and read by debug interface 
 // ----------------------------------------------------------------------------
 
-module SingleCLKFIFO(fifo_if fifo); 
+module SingleCLKFIFO #(NBITS=32)(input clk, fifo_if.sender fifo); 
   
   //FIFO memory
   logic [31:0] mem [255:0];
@@ -16,7 +16,7 @@ module SingleCLKFIFO(fifo_if fifo);
   //FIFO status
   logic [7:0] cnt;
   //FIFO logic
-  always_ff @(posedge fifo.clk )
+  always_ff @(posedge clk )
   begin
     if(fifo.rst) begin
       wr_ptr <= 9'd0;
@@ -24,18 +24,18 @@ module SingleCLKFIFO(fifo_if fifo);
     else begin
       if(fifo.wr_en && !fifo.full)
       begin
-        mem[wr_ptr[7:0]] <= fifo.wr_data;
+        mem[wr_ptr[7:0]] <= fifo.wr_data[NBITS-1:0];
         wr_ptr <= wr_ptr + 1;
       end
     end
   end
-  always_ff @(posedge fifo.clk) begin
+  always_ff @(posedge clk) begin
     if(fifo.rst) begin
       rd_ptr <= 9'd0;
     end else begin
       if(fifo.rd_en && !fifo.empty)
       begin
-        fifo.rd_data <= mem[rd_ptr[7:0]];
+        fifo.rd_data[NBITS-1:0] <= mem[rd_ptr[7:0]];
         rd_ptr <= rd_ptr + 1;
         fifo.valid <= 1;
       end
@@ -47,7 +47,7 @@ module SingleCLKFIFO(fifo_if fifo);
       fifo.full  = ((rd_ptr[7:0] == wr_ptr[7:0]) && (rd_ptr[8] != wr_ptr[8]));
   end
   //fifo almost full logic
-  always_ff @(posedge fifo.clk) begin
+  always_ff @(posedge clk) begin
     if(fifo.rst) begin
       cnt[7:0] <= 8'd0;
     end else begin

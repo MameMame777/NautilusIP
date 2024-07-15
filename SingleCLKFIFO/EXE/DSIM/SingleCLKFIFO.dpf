@@ -5,11 +5,14 @@ version: '0.2'
 work_dir: .
 design_root_dir: .
 simulations:
-  - name: Sim1
-    options: '-top work.SingleCLKFIFO_tb   -L dut +acc+b -waves waves.mxd'
+  - name: TESTCASE=0
+    options: '-top work.top -L dut +acc+b -waves waves.mxd  +TESTCASE=0'
 source_files:
   - language: verilog
     path: filelist
+    options: >-
+      +incdir+..\..\verification\ +incdir+..\..\verification\tests
+      +incdir+..\..\RTL
     file_list: relative-to-file
 library_search_paths:
   - $STD_LIBS\ieee93

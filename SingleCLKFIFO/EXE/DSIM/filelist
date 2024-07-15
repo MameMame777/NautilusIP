@@ -1,7 +1,21 @@
+#Pakcage
+../../verification/pkg_definitions.sv
+../../verification/pkg.sv
+#test bench
+../../verification/component_base_t.sv
+../../verification/simple_item_t.sv
+../../verification/test_base_t.sv
+../../verification/collector_t.sv
+../../verification/driver_t.sv
+../../verification/run_param_t.sv
+##test scneario
+../../verification/tests/test1_t.sv
+../../verification/tests/test2_t.sv
+../../verification/testbench_t.sv
+../../verification/top.sv
+##assertions
+../../verification/SingleCLKFIFO_assertion.sv
+
 #Device Under verification
 ../../rtl/SingleCLKFIFO.sv
-../../rtl/interface.sv
-#test bench
-../../verification/SingleCLKFIFO_class.sv 
-../../verification/SingleCLKFIFO_tb_top.sv
-../../verification/SingleCLKFIFO_assertion.sv
+../../rtl/fifo_if.sv
