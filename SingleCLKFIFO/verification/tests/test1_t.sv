@@ -1,6 +1,6 @@
 class test1_t extends test_base_t;
   int op[] = '{
-    RESET,
+    RESET,NOP,
     WRITE,WRITE,WRITE,WRITE,
     WRITE,WRITE,WRITE,WRITE,
     WRITE,WRITE,WRITE,WRITE,

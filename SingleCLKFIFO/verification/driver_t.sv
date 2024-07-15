@@ -17,14 +17,14 @@ task driver_t::driver_dut(simple_item_t item);
   if(item.rst) begin
     vif.rst = 1;
     @(vif.cb) vif.rst = 0;
-  end else if(item.wr_en) begin
+  end else if(item.write) begin
     vif.wr_en   <= 1 ;
     vif.wr_data <= item.wr_data[0];
     //$display("write data %0x",item.wr_data[0]);
     @(negedge vif.clk);
     vif.wr_en   <= 0;
     vif.wr_data <=0;
-  end  else if(item.rd_en) begin
+  end  else if(item.read) begin
     vif.rd_en    <= 1 ;
     //vif.rd_data <= item.d;
     @(negedge vif.clk);

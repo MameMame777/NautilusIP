@@ -1,9 +1,6 @@
 class simple_item_t;
 import pkg_definitions::*;
-  logic             wr_en;
   logic [NBITS-1:0] wr_data[255:0];
-  
-  logic             rd_en;
   logic [NBITS-1:0] rd_data;
   logic             rst;   //FIFO reset
   logic             write; //FIFO write operation
@@ -26,8 +23,6 @@ function void init();
   all_write= '0;
   all_read = '0;
   //data
-  wr_en    = '0;
-  rd_en    = '0;
   rd_data  = '0;
   for(int i=0; i<255; i++)begin
     wr_data[i] = '0;
